@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<?php 
 	
@@ -7,30 +8,52 @@
 	include 'config.php';
 	?>
 	<title>Sistem Informasi Penjualan || ADMIN</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+		integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+		integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="../assets/js/jquery-ui/jquery-ui.css">
 	<script type="text/javascript" src="../assets/js/jquery.js"></script>
 	<script type="text/javascript" src="../assets/js/jquery.js"></script>
 	<script type="text/javascript" src="../assets/js/bootstrap.js"></script>
 	<script type="text/javascript" src="../assets/js/jquery-ui/jquery-ui.js"></script>
-		
+
 </head>
+
 <body>
 	<div class="navbar navbar-default">
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<a href="" class="navbar-brand">DESSERT BY AIKO</a>
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+					data-target=".navbar-collapse">
 					<span class="sr-only">Toggle navigation</span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
 			</div>
-			<div class="collapse navbar-collapse">				
+			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a id="pesan_sedia" href="#" data-toggle="modal" data-target="#modalpesan"><span class='glyphicon glyphicon-comment'></span>  Pesan</a></li>
-					<li><a class="dropdown-toggle" data-toggle="dropdown" role="button" href="#">Hy , <?php echo $_SESSION['uname']  ?>&nbsp&nbsp<span class="glyphicon glyphicon-user"></span></a></li>
+					<li><a id="pesan_sedia" href="#" data-toggle="modal" data-target="#modalpesan"><span
+								class='glyphicon glyphicon-comment'></span> Pesan</a></li>
+					<li><a class="dropdown-toggle" data-toggle="dropdown" role="button" href="#">
+							<?php 
+								$use=$_SESSION['uname'];
+								$fo=mysqli_query($koneksi, "select foto from admin where uname='$use'");
+								while($f=mysqli_fetch_array($fo)){
+									?>
+							<div >
+								
+									<img width="30px" height="40px" src="foto/<?php echo $f['foto']; ?>"><?php echo $_SESSION['uname']  ?>
+								
+							</div>
+							<?php 
+							}
+							?>
+						</a>
+					</li>
 				</ul>
 			</div>
 		</div>
@@ -55,9 +78,9 @@
 					?>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>						
+					<button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
 				</div>
-				
+
 			</div>
 		</div>
 	</div>
@@ -68,26 +91,27 @@
 			$use=$_SESSION['uname'];
 			$fo=mysqli_query($koneksi, "select foto from admin where uname='$use'");
 			while($f=mysqli_fetch_array($fo)){
-				?>				
+				?>
 
-				<div class="col-xs-6 col-md-12">
-					<a class="thumbnail">
-						<img class="img-responsive" src="foto/<?php echo $f['foto']; ?>">
-					</a>
-				</div>
-				<?php 
+			<div class="col-xs-6 col-md-12">
+				<a class="thumbnail">
+					<img class="img-responsive" src="foto/<?php echo $f['foto']; ?>">
+				</a>
+			</div>
+			<?php 
 			}
-			?>		
+			?>
 		</div>
 
 		<div class="row"></div>
 		<ul class="nav nav-pills nav-stacked">
-			<li class="active"><a href="index.php"><span class="glyphicon glyphicon-home"></span>  Dashboard</a></li>			
-			<li><a href="barang.php"><span class="glyphicon glyphicon-briefcase"></span>  Data Produk</a></li>
-			<li><a href="barang_laku.php"><span class="glyphicon glyphicon-briefcase"></span>  Informasi Penjualan</a></li>        												
-			<li><a href="ganti_foto.php"><span class="glyphicon glyphicon-picture"></span>  Ganti Foto</a></li>
+			<li class="active"><a href="index.php"><span class="glyphicon glyphicon-home"></span> Dashboard</a></li>
+			<li><a href="barang.php"><span class="glyphicon glyphicon-briefcase"></span> Data Produk</a></li>
+			<li><a href="barang_laku.php"><span class="glyphicon glyphicon-briefcase"></span> Informasi Penjualan</a>
+			</li>
+			<li><a href="ganti_foto.php"><span class="glyphicon glyphicon-picture"></span> Ganti Foto</a></li>
 			<li><a href="ganti_pass.php"><span class="glyphicon glyphicon-lock"></span> Ganti Password</a></li>
-			<li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span>  Logout</a></li>			
+			<li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
 		</ul>
 	</div>
 	<div class="col-md-10">

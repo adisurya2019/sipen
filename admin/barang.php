@@ -31,10 +31,7 @@ $start = ($page - 1) * $per_hal;
 ?>
 <div class="col-md-12">
 	<table class="col-md-2">
-		<tr>
-			<td>Jumlah Record</td>		
-			<td><?php echo $jum; ?></td>
-		</tr>
+		
 		<tr>
 			<td>Jumlah Halaman</td>	
 			<td><?php echo $halaman; ?></td>
